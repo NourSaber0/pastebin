@@ -9,7 +9,7 @@ const database = "mongodb://localhost:27017/paste";
 const app = express();
 app.use(cors({origin: "*"}));
 app.use(express.json());
-mongoose.connect("mongodb+srv://vercel-admin-user:j4COosaIqORGBtSk@cluster0.ovlxiue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then(res => {console.log("database connected successfully")})
+mongoose.connect(`${database}`).then(res => {console.log("database connected successfully")})
 
 app.post('/Paste', (req, res) => {
 	//console.log(req.body);
