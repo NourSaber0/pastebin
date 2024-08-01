@@ -3,27 +3,19 @@ import Card from "./Card";
 import axios from "axios";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import GenerateUrl from "./GenerateUrl";
 import {useNavigate} from "react-router-dom";
 import React from 'react'
-import Select from 'react-select'
+
 
 const PasteForm = () => {
   const [paste, setPaste] = useState('');
 	const [delay, setDelay] = useState('');
 	const [pasteExpiryTime, setPasteExpiryTime] = useState('');
-	// const expiryOptions = [
-	// 	{ value: '1', label: '1 hour' },
-	// 	{ value: '2', label: '2 hours' },
-	// 	{ value: '3', label: '1 day' },
-	// 	{ value: '4', label: '1 week' },
-	// 	{ value: '5', label: 'Never' },
-	// ];
-  // const [pasteId, setPasteId] = useState('');
   const navigate = useNavigate();
+	const url= process.env.DATA_API_URL;
   const handleSubmit = (e) => {
 	  e.preventDefault();
-	  axios.post('http://localhost:3001/Paste', {paste, delay, pasteExpiryTime})
+	  axios.post(`${url}/Paste`, {paste, delay, pasteExpiryTime})
 		  .then(res => {
 			  console.log(res.data);
 			  const pasteId= res.data._id;

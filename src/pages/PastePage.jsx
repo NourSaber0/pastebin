@@ -3,8 +3,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Spinner from  "../components/Spinner"
 import GenerateUrl from "../components/GenerateUrl";
-import {toast, ToastContainer} from "react-toastify";
-import NotFoundPage from "./NotFoundPage";
+
 
 
 const PastePage = () => {
@@ -13,8 +12,9 @@ const PastePage = () => {
 	const {id } = useParams();
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(true);
+	const url= process.env.DATA_API_URL;
 	useEffect(() => {
-		axios.get(`http://localhost:3001/paste/${id}`)
+		axios.get(`${url}/paste/${id}`)
 	.then(res => {
 			console.log(res.data);
 			if (res.data === null) {

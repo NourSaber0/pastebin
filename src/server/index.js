@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 const cors = require("cors");
 const PasteModel = require("./models/PasteModel")
 const port = 3001;
-const database = "mongodb://localhost:27017/paste";
+const database = process.env.MONGODB_URI;
+
 
 
 const app = express();

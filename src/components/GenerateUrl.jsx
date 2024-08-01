@@ -6,6 +6,7 @@ import axios from "axios";
 const GenerateUrl = ({pasteId}) => {
 
 	const navigate = useNavigate();
+	const url= process.env.DATA_API_URL
 	const handleCopy = () => {
 		toast.success('URL copied to clipboard');
 
@@ -15,7 +16,7 @@ const GenerateUrl = ({pasteId}) => {
 		if (!confirmDelete) {
 			return;
 		}
-		axios.delete(`http://localhost:3001/paste/${id}`)
+		axios.delete(`${url}/paste/${id}`)
 			.then(res => {
 				console.log('Paste deleted', res);
 			})
